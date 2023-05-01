@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concierge</title>
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+    <script>
+      function toggleCustomTemplate() {
+        const templateSelect = document.getElementById("templateId");
+        const customTemplateArea =
+          document.getElementById("customTemplateArea");
+        if (templateSelect.value === "custom") {
+          customTemplateArea.style.display = "block";
+        } else {
+          customTemplateArea.style.display = "none";
+        }
+      }
+      function insertValue(value) {
+        const textarea = document.getElementById("customTemplate");
+        textarea.value += value;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Concierge</h1>
+    <h2>Generate Message</h2>
+
+    <form action="/message" method="post">
+      <label for="templateId">Select Template:</label>
+      <select
+        name="templateId"
+        id="templateId"
+        onchange="toggleCustomTemplate()"
+      >
+        <% templates.forEach(template => { %>
+        <option value="<%= template.id %>"><%= template.name %></option>
+        <% }); %>
+        <option value="custom">custom</option>
+      </select>
+
+      <label for="guestId">Select Guest:</label>
+      <select name="guestId" id="guestId">
+        <% guests.forEach(guest => { %>
+        <option value="<%= guest.id %>">
+          <%= guest.firstName %> <%= guest.lastName %>
+        </option>
+        <% }); %>
+      </select>
+
+      <label for="companyId">Select Company:</label>
+      <select name="companyId" id="companyId">
+        <% companies.forEach(company => { %>
+        <option value="<%= company.id %>"><%= company.company %></option>
+        <% }); %>
+      </select>
+
+      <div id="customTemplateArea" style="display: none">
+        <label for="customTemplate">Custom Template (optional):</label>
+        <textarea
+          name="customTemplate"
+          id="customTemplate"
+          rows="1"
+          cols="50"
+        ></textarea>
+        <button type="button" onclick="insertValue('{firstName}')">
+          Insert First Name
+        </button>
+        <button type="button" onclick="insertValue('{lastName}')">
+          Insert Last Name
+        </button>
+        <button type="button" onclick="insertValue('{company}')">
+          Insert Company
+        </button>
+      </div>
+
+      <button type="submit">Generate Message</button>
+    </form>
+
+    <% if (message) { %>
+    <h2>Generated Message:</h2>
+    <p><%= message %></p>
+    <% } %>
+  </body>
+</html>
