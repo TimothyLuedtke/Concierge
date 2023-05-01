@@ -2,6 +2,17 @@
 
 Concierge is a customizable messaging template application that allows users to generate personalized messages for hotel guests. The application provides a set of predefined message templates, and users can select a template, guest, and hotel company to generate a message. Additionally, users have the option to create custom message templates.
 
+## Table of Contents
+
+- [Features and Functionality](#features-and-functionality)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Why JavaScript](#why-javascript)
+  - [Dependencies](#dependencies)
+- [Future Improvements](#future-improvements)
+- [Considersations](#considersations)
+
 ## Features and Functionality
 
 - Load predefined message templates, guest information, and hotel company information from JSON files.
@@ -59,7 +70,7 @@ npm run start
 - [EJS](https://ejs.co/) - Embedded JavaScript templating
 - [Body-Parser](https://www.npmjs.com/package/body-parser) - Node.js body parsing middleware
 
-## Future Improvements and Considerations
+## Future Improvements
 
 - Refactor code to improve readability and maintainability.
 - Add testing.
@@ -70,7 +81,7 @@ npm run start
 - Improve performance through code optimization.
 - Add features including unix timestamp conversion.
 
-## Aside
+## Considersations
 
 - The goal was to create a working application in a short amount of time.
 - Testing, refactoring, and additional features were not implemented due to time constraints.
